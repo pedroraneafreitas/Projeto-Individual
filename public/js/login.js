@@ -1,7 +1,7 @@
 function entrar() {
-    aguardar();
+    // aguardar();
 
-    var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
+    // var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
 
     console.log("FORM LOGIN: ", formulario.get("login"));
     console.log("FORM SENHA: ", formulario.get("senha"));
@@ -35,7 +35,7 @@ function entrar() {
             resposta.text().then(texto => {
                 console.error(texto);
                 // limparFormulario();
-                finalizarAguardar(texto);
+                // finalizarAguardar(texto);
             });
         }
 
@@ -47,7 +47,7 @@ function entrar() {
 }
 
 function validarSessao() {
-    aguardar();
+    // aguardar();
 
     var login = sessionStorage.LOGIN_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
@@ -58,15 +58,15 @@ function validarSessao() {
         // window.alert(`Seja bem-vindo, ${nome}!`);
         h1Titulo.innerHTML = `${login}`;
 
-        finalizarAguardar();
+        // finalizarAguardar();
     } else {
         window.location = "login.html";
     }
 }
 
 function sair() {
-    aguardar();
+    // aguardar();
     sessionStorage.clear();
-    finalizarAguardar();
+    // finalizarAguardar();
     window.location = "login.html";
 }
