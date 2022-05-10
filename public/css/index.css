@@ -14,7 +14,7 @@
 }
 
 .logo img {
-    width: 21%;
+    width: 90%;
     height: 100%;
 
 }
@@ -57,7 +57,7 @@
     justify-content: center;
 }
 
-.banner{
+.banner {
     height: 100%;
     width: 100%;
     background-image: url(../assets/campo.webp);
@@ -65,31 +65,60 @@
     display: flex;
     align-items: center;
     border: 1px solid #daa520;
-    font-size:20px;
+    font-size: 20px;
     font-weight: bolder;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
+    font-style: italic;
 }
 
-.formBox{
+.explic {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(../assets/flor.jpg);
+    background-size: cover;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bolder;
+    color: rgb(255, 101, 126);
+}
+
+.explic button{
+
+    width: 20%;
+    color: #daa520;
+    font-size: large;
+    border-radius: 20px;
+    background-color: blue;
+    margin-top: 20px;
+    height: 40px;
+    cursor: pointer;
+}
+
+
+.formBox {
     background-color: #daa520;
     width: 100%;
     height: 300px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border:2px solid black;
+    border: 2px solid black;
 }
 
 .Box {
-     width: 20%;
-     height: 100%;
-     border:2px solid black;
-     justify-content: center;
-     font-size: large;
-     font-family: Georgia, 'Times New Roman', Times, serif;
-     font-weight: 50px;
-     background-color: yellow;
+    width: 20%;
+    height: 100%;
+    border: 2px solid black;
+    justify-content: center;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 50px;
+    background-color: yellow;
 }
 
 .escritor {
@@ -97,7 +126,7 @@
     width: 100%;
     background-image: url(../assets/escritor.jpg);
     background-size: cover;
-    border-bottom:1px solid black ;
+    border-bottom: 1px solid black;
 }
 
 .diario {
@@ -105,7 +134,7 @@
     width: 100%;
     background-image: url(../assets/Diario.jpg);
     background-size: cover;
-    border-bottom:1px solid black ;
+    border-bottom: 1px solid black;
 }
 
 

@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* <header> */
+
+.header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    background-color: yellow;
+}
+
+.logo img {
+    width: 90%;
+    height: 100%;
+
+}
+
+.navbar {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar li {
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+    font-family: fantasy;
+}
+
+
+/* <conteudo> */
+.container {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #daa520;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(221, 221, 4);
+}
+
+.login{
+    display: flex;
+    height: 400px;
+    width: 60%;
+    flex-direction: column;
+    border: 2px solid black;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #d3d3d3;
+   
+
+}
+.login span {
+  font-size: 25px;
+  
+}
+
+.login input{
+    width:50%;
+    height: 20px;
+    border-radius: 20px;
+    border: 2px solid black;
+    font-size: 17px;
+}
+
+.login button{
+    width: 20%;
+    color: #daa520;
+    font-size: large;
+    border-radius: 20px;
+    background-color: blue;
+    margin-top: 20px;
+    height: 26px;
+    cursor: pointer;
+}
+/* </conteudo> */
+/* <footer> */
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 20px;
+    font-family: fantasy;
+}
+
+/* </footer> */

@@ -28,7 +28,7 @@
 
         <div class="navbar">
             <ul>
-                <li><a href="">Sobre Nós</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
                 <li> <a href="login.html"> Login</a></li>
                 <li> <a href="cadastro.html">Cadastro</a></li>
             </ul>
@@ -43,29 +43,43 @@
 
     <div class="container">
         <div class="banner">
-            <p>A depressão esta cada vez mais presente nos jovem com o passar do tempo, e, com isso o numero suicidio
-         vem crescendo junto. </p>
-            <p>Foi pensando nos jovens que criamos essa pagina, que o intuito é que você tenha um lugar para desabafar 
-        com alguem, como se ela fosse seu diario.</p>
+            <span>A depressão esta cada vez mais presente nos jovem com o passar do tempo, e, com isso o numero suicidio
+                vem crescendo junto. </span>
+            <span>Foi pensando nos jovens que criamos esse blog, que o intuito é que você tenha um lugar para desabafar
+                com pessoas, como se elas fossem seu diario.</span>
         </div>
-       
+
     </div>
     <div class="container">
-         
+        <div class="explic">
+
+            <span id="sobre">
+                Aqui é para você desabafar sobre a sua vida, seus problemas e etc.
+            </span>
+            <span>E para que que todos participem, nosso site é formado por dois tipo de usuarios. </span>
+            <span>Os escritores e os diarios.</span>
+
+        </div>
+
 
     </div>
     <div class="formBox">
-         <div class="Box">
-             <div class="diario"> </div>
-             <p> Aquele que vai ler e dar apoio ao escritores.</p>
-         </div>
-         <div class="Box">
-             <div class="escritor"></div>
-             <p> Aquele que irá desabafar com o diarios.</p>
-         </div>
+        <div class="Box">
+            <div class="diario"> </div>
+            <p> Aqueles que dão ler e dar apoio ao escritores.</p>
+        </div>
+        <div class="Box">
+            <div class="escritor"></div>
+            <p> Aquelse que desabafam com o diarios.</p>
+        </div>
     </div>
 
-
+    <div class="container">
+        <div class="explic">
+           <span> faça o login e se junto e nós.</span>
+            <button onclick="cadastro()">cadastro</button>
+        </div>
+    </div>
     <!-- fim conteudo -->
 
     <!-- inicio footer -->
@@ -81,3 +95,9 @@
 </body>
 
 </html>
+
+<script>
+    function cadastro(){
+        window.location="cadastro.html  "
+    }
+</script>
