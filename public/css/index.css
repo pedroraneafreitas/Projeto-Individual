@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    overflow-x: none;
 }
 
 /* <header> */
@@ -11,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     background-color: #0473a7;
-    border: 2px solid black;
+   
 }
 
 .logo img {
@@ -95,6 +96,10 @@
     color: white;
 }
 
+.explic span{
+    margin-bottom: 10%;
+}
+
 .explic button{
 
     width: 20%;
@@ -129,6 +134,7 @@
     align-items: center;
     align-content: center;
     color:white;
+    padding-left: 18px;
 }
 
 
