@@ -12,7 +12,6 @@
     display: flex;
     justify-content: space-between;
     background-color: #0473a7;
-    border: 2px solid black;
 }
 
 .logo img {
