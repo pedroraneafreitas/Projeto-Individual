@@ -14,9 +14,12 @@ body {
     justify-content: space-between;
     background-color: #0473a7;
 }
+.header h3{
+    align-self: center;
+}
 
 .logo img {
-    width: 50%;
+    width: 100%;
     height: 100%;
 }
 

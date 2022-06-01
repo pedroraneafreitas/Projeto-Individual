@@ -11,20 +11,16 @@
     <link rel="stylesheet" href="../dashboard/posts.css">
 
     <script src="../js/funcoes.js"></script>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-    <!-- scripts do Chart.js -->
-    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
 
 </head>
 
-<body >
-    <!-- onload="validarSessao(), atualizarFeed()" -->
-    <!-- <body onload="validarSessao()"> -->
+<body onload="validarSessao()">
+
+    <!-- , atualizarFeed() -->
 
     <div class="janela">
         <div class="header-left">
@@ -35,8 +31,8 @@
             </div>
 
             <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Post´s</h3>
+                <a href="./edição_post.html">
+                    <h3>Editar seus post´s</h3>
                 </a>
             </div>
 
@@ -61,7 +57,7 @@
 
 </html>
 
-<script>
+<!-- <script>
 
     let proximaAtualizacao;
 
@@ -71,8 +67,6 @@
 
     //verificar_autenticacao();
 
-    // altere aqui como os dados serão exibidos
-    // e como são recuperados do BackEnd
     function obterDadosGrafico(idAquario) {
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
@@ -221,4 +215,4 @@
             });
 
     }
-</script>
+</script> -->

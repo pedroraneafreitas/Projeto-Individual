@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcquaTec | Página Inicial</title>
+    <title>InstaCode | Editar post</title>
 
     <link rel="stylesheet" href="../dashboard/edição_post.css">
 
@@ -18,9 +18,8 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body onload="validarSessao()">
     <!-- onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618; -->
-    <!-- <body onload="validarSessao()"> -->
 
         <div class="janela">
 
@@ -28,12 +27,12 @@
                 <div class="logo">
                     <a href="index.html"><img src="../assets/logo.jpg"></a>
                 </div>
-        
+                 <h3> Olá, <span id="b_usuario"></span></h3>
         
                 <div class="navbar">
                     <ul>
                         <li> <a href="posts.html">Posts</a></li>
-                        <li> <a href="edição_post.html">Editar seus Posts </a></li>
+                        <li> <a href="mural.html">Fazer um Post </a></li>
                     </ul>
         
                 </div>
@@ -47,19 +46,14 @@
                     <div class="container_puclicacao">
                         <h1>editar um post</h1>
                         <div class="div-form">
-                            <form id="form_postagem" method="post" onsubmit="return publicar()">
+                            <!-- <form id="form_postagem" method="post" onsubmit="return publicar()"> -->
                                 
-                                <h3>titulo da postagem</h3>
-                                <input type="text" id="titulo_input">
                                 <h3>id da postagem</h3>
-                                <input type="text" id="id_input">
-                                   <h3>Novo título:</h3>
-                                    <br>
-                                    <input name="titulo" id="titulo" maxlength="100" type="text">
+                                <input type="text" id="input_id_postagem">
                             
                                     <h3>editar:</h3>
                                     <br>
-                              <textarea name="descricao" id="textarea_descricao"  rows="5"></textarea>
+                              <textarea name="descricao" id="input_descricao"  rows="5"></textarea>
                                 
                                 <br>
                                 <button onclick="editar()">editar</button>
@@ -79,18 +73,20 @@
 </html>
 
 <script>
-    function listarInfosDeUm() {
-        console.log("Criar função de trazer informações de post escolhido");
-    }
-
+    
     function editar() {
-        fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
-            method: "PUT",
+        var idPost = Number(input_id_postagem.value);
+        var corpo = input_descricao.value;
+
+             
+        fetch(`/avisos/editar`, {
+            method: "post",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                descricao: textarea_descricao.value
+                idPostServer:idPost,
+                descricaoServer: corpo
             })
         }).then(function (resposta) {
 
@@ -106,5 +102,8 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
-
+    
+    // function listarInfosDeUm() {
+    //     console.log("Criar função de trazer informações de post escolhido");
+    // }
 </script>
