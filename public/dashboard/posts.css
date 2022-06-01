@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    overflow-x: none;
+   
+}
+
+.janela{
+    height: 615px;
+    width: 100%;
+}
+
+
+.header-left{
+    width: 12%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #0473a7;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-left a{
+    color: black;
+    text-decoration: none;
+}
+
+.header-left button{
+    margin-bottom: 5%;
+    width: 80%;
+    cursor: pointer;
+    height: 20px;
+    background-color:blue;
+    color: white;
+    font-size: 15px ;
+    font-weight: bolder;
+    border: none;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
