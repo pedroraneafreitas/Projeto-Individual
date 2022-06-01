@@ -54,17 +54,9 @@
     <div class="container_feed">
           <div class="post">
               <h3>#id=<b id="idPost"></b></h3>
-              <h3 id="titulo">teste</h3>
+              <h3 id="titulo"></h3>
 
-            <span id="descricao">   
-                ksaugfhdsv fivlihvdslihdfvialshfv ]
-                sadasihdvaslhdviasuvdlaishvsd
-                assudhvasudvulasyvdlashvdiyasvfljsavdluhasvyfas
-                asihdvasidvaushdviasycviasudfaknfbiasufuasvd
-                sagdvisyadlhas
-                sadkasõdibasugddihsbjahxjvcygiuihjbjhvgygu
-                sajdvluhasvludhlsajhdv
-
+            <span id="descricao">
             </span>
           </div>
     </div>
@@ -78,6 +70,8 @@
 <script>
 
     let proximaAtualizacao;
+    var Post = []
+    let idPostNovo= sessionStorage.ID_USUARIO + 1;
 
     window.onload = obterPosts();
 
@@ -90,13 +84,24 @@
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas`,{
+        method: "get",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+               idPostNovoServer:idPostNovo
+
+            })
+        })
+        
+        .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
+                   body:JSON.stringify()
+                    post.push(resposta);
 
-                    plotarGrafico(resposta, idAquario);
+    
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -107,52 +112,9 @@
             });
 
     }
+;
 
 
-
-        console.log(JSON.stringify(dados));
-
-        var ctx = canvas_grafico.getContext('2d');
-        window.grafico_linha = Chart.Line(ctx, {
-            data: dados,
-            //Configurações do gráfico
-            options: {
-                responsive: true,
-                animation: { duration: 500 },
-                hoverMode: 'index',
-                stacked: false,
-                title: {
-                    display: true,
-                    text: 'Histórico recente de umidade/temperatura'
-                },
-                scales: {
-                    yAxes: [{
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-temperatura',
-                        ticks: {
-                            beginAtZero: true,
-                            max: 100,
-                            min: 0
-                        }
-                    }, {
-                        type: 'linear',
-                        display: false,
-                        position: 'right',
-                        id: 'y-umidade',
-                        ticks: {
-                            beginAtZero: true,
-                            max: 100,
-                            min: 0
-                        },
-
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
-                    }],
-                }
-            }
-        });
+        function obterPosts(){}
 
 </script>
