@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AcquaTec | Página Inicial</title>
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./dashboards.css">
+    <link rel="stylesheet" href="../dashboard/edição_post.css">
+
     <script src="../js/funcoes.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,80 +22,60 @@
     <!-- onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618; -->
     <!-- <body onload="validarSessao()"> -->
 
-    <div class="janela">
+        <div class="janela">
 
-
-        <div class="header">
-
-            <h1>AcquaTec</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>
-
-        <div class="dash-right">
-
-            <div class="avisos">
-                <div class="container">
-                    <h1>Editar um aviso</h1>
-                    <div class="div-form">
-                        <label>
-                            ID:
-                            <br>
-                            <input id="input_id" maxlength="100" type="text" style="color: rgb(196, 196, 196)" disabled>
-                        </label>
-                        <label>
-                            Autor:
-                            <br>
-                            <input id="input_nome" maxlength="100" type="text" style="color: rgb(196, 196, 196)"
-                                disabled>
-                        </label>
-                        <label>
-                            Título:
-                            <br>
-                            <input id="input_titulo" maxlength="100" type="text" style="color: rgb(196, 196, 196)"
-                                disabled>
-                        </label>
-                        <br>
-                        <label>
-                            Descrição (máximo de 250 caracteres):
-                            <br>
-                            <textarea id="textarea_descricao" maxlength="250" rows="5"></textarea>
-                        </label>
-                        <br>
-                        <button onclick="editar()">Editar</button>
-                    </div>
-
+            <div class="header">
+                <div class="logo">
+                    <a href="index.html"><img src="../assets/logo.jpg"></a>
                 </div>
+        
+        
+                <div class="navbar">
+                    <ul>
+                        <li> <a href="posts.html">Posts</a></li>
+                        <li> <a href="edição_post.html">Editar seus Posts </a></li>
+                    </ul>
+        
+                </div>
+        
+        
             </div>
-        </div>
-    </div>
-</body>
-
+    
+            <div class="container">
+    
+                <!-- <div class="avisos"> -->
+                    <div class="container_puclicacao">
+                        <h1>editar um post</h1>
+                        <div class="div-form">
+                            <form id="form_postagem" method="post" onsubmit="return publicar()">
+                                
+                                <h3>titulo da postagem</h3>
+                                <input type="text" id="titulo_input">
+                                <h3>id da postagem</h3>
+                                <input type="text" id="id_input">
+                                   <h3>Novo título:</h3>
+                                    <br>
+                                    <input name="titulo" id="titulo" maxlength="100" type="text">
+                            
+                                    <h3>editar:</h3>
+                                    <br>
+                              <textarea name="descricao" id="textarea_descricao"  rows="5"></textarea>
+                                
+                                <br>
+                                <button onclick="editar()">editar</button>
+                            </form>
+                        </div>
+                        <!-- <h1>Posts</h1>
+                        <div class="div-results">
+                            <div id="feed_container" class="feed-container">
+                            </div>
+                        </div> -->
+                    </div>
+                <!-- </div> -->
+    
+    
+    
+    
 </html>
 
 <script>
