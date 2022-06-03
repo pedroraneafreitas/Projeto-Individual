@@ -10,6 +10,14 @@ function instrucao(){
 
 }
 
+function postNovo(post){
+    instrucaoSql =`select * from public where id = ${post};`
+    console.log("executando SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql);
+
+
+}
+
 
 
 
@@ -39,7 +47,8 @@ function instrucao(){
 //     return database.executar(instrucaoSql);
 // }
 module.exports = {
-    instrucao
+    instrucao,
+    postNovo
     // buscarUltimasMedidas,
     // buscarMedidasEmTempoReal
 }

@@ -1,16 +1,31 @@
 var medidaModel = require("../models/medidaModel");
 
-function instrucao(res){
+function instrucao(res) {
     medidaModel.instrucao()
-    .then(
-        function (resposta) {
-            console.log(`\nResultados encontrados: ${resposta.length}`);
-            console.log(`Resultados: ${JSON.stringify(resposta)}`); // transforma JSON em String
+        .then(
+            function (resposta) {
+                console.log(`\nResultados encontrados: ${resposta.length}`);
+                console.log(`Resultados: ${JSON.stringify(resposta)}`); // transforma JSON em String
 
-            res.json(resposta)
-        }
-    )
- 
+                res.json(resposta)
+            }
+        )
+
+}
+
+function postNovo(req, res) {
+
+    var post = req.body.numeroPostServer;
+    medidaModel.postNovo(post)
+        .then(
+            function (resposta) {
+                console.log(`\nResultados encontrados: ${resposta.length}`);
+                console.log(`Resultados: ${JSON.stringify(resposta)}`); // transforma JSON em String
+
+                res.json(resposta)
+            }
+        )
+
 }
 
 
@@ -55,7 +70,8 @@ function instrucao(res){
 
 
 module.exports = {
-    instrucao
+    instrucao,
+    postNovo
 
 
     // buscarUltimasMedidas,

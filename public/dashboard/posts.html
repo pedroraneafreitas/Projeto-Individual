@@ -1,147 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <link rel="shortcut icon" href="../assets/logo.jpg">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="shortcut icon" href="../assets/logo.jpg" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>InstaCode | Posts</title>
 
-    <link rel="stylesheet" href="../dashboard/posts.css">
+    <link rel="stylesheet" href="../dashboard/posts.css" />
 
     <script src="../js/funcoes.js"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-
-</head>
-
-<body onload="validarSessao(), postPadrao()">
-    
-
+  <body onload="validarSessao(), postPadrao()">
     <!-- , atualizarFeed() -->
-   <div class="container">
-     <div class="janela">
+    <div class="container">
+      <div class="janela">
         <div class="header-left">
-            <h1><a>InstaCode</a></h1>
+          <h1><a>InstaCode</a></h1>
 
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./edição_post.html">
-                    <h3>Editar seus post´s</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Criar Post</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3><a href="">Sair</a></h3>
-            </div>
-            
-            <button class="btn-chart" onclick="obterPosts()">Proximo Post</button>
-
-        </div>
-    </div>
-
-    <div class="container_feed">
-          <div class="post">
-              <h3>#id = <b id="idPost"> </b></h3>
-              <h1 id="titulo"></h1>
-
-            <span id="descricao">
-                asiobdojasbçdougsabidjbas
-            </span>
+          <div class="hello">
+            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
           </div>
+
+          <div class="btn-nav-white">
+            <a href="./edição_post.html">
+              <h3>Editar seus post´s</h3>
+            </a>
+          </div>
+
+          <div class="btn-nav-white">
+            <a href="./mural.html">
+              <h3>Criar Post</h3>
+            </a>
+          </div>
+
+          <div class="btn-logout" onclick="limparSessao()">
+            <h3><a href="">Sair</a></h3>
+          </div>
+
+          <button class="btn-chart" onclick="obterPosts()">Proximo Post</button>
+        </div>
+      </div>
+
+      <div class="container_feed">
+        <div class="post">
+          <h3>#id = <b id="idPost"> </b></h3>
+          <h1 id="titulo"></h1>
+
+          <span id="descricao"> asiobdojasbçdougsabidjbas </span>
+        </div>
+      </div>
     </div>
-</div>
-
-
-</body>
-
+  </body>
 </html>
 
 <script>
-
-function postPadrao(){
-
+  var numeroPost = 1;
+  function postPadrao() {
     fetch("/medidas/instrucao", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO postPadrão()!");
-            resposta.json().then(JSON=>{
-                console.log(JSON);
-                idPost.innerHTML = JSON[0].id
-                titulo.innerHTML = JSON[0].titulo
-                descricao.innerHTML = JSON[0].descricao
-            })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO postPadrão()!");
+      resposta.json().then((JSON) => {
+        console.log(JSON);
+        idPost.innerHTML = JSON[0].id;
+        titulo.innerHTML = JSON[0].titulo;
+        descricao.innerHTML = JSON[0].descricao;
+      });
+    });
+  }
 
-        });
-
-
-    }
-
-
-
-
-
-//     let proximaAtualizacao;
-//     var Post = []
-//     let idPostNovo= sessionStorage.ID_USUARIO + 1;
-
-//     window.onload = obterPosts();
-
-//     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-//     //verificar_autenticacao();
-
-//     function obterPostsNovos(idAquario) {
-//         if (proximaAtualizacao != undefined) {
-//             clearTimeout(proximaAtualizacao);
-//         }
-
-//         fetch(`/medidas/ultimas`,{
-//         method: "get",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify({
-//                idPostNovoServer:idPostNovo
-
-//             })
-//         })
-        
-//         .then(function (response) {
-//             if (response.ok) {
-//                 response.json().then(function (resposta) {
-//                    body:JSON.stringify()
-//                     post.push(resposta);
-
-    
-//                 });
-//             } else {
-//                 console.error('Nenhum dado encontrado ou erro na API');
-//             }
-//         })
-//             .catch(function (error) {
-//                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-//             });
-
-//     }
-// ;
-
-
-        function obterPosts(){}
-
+  function obterPosts() {
+    numeroPost = numeroPost + 1;
+    console.log(numeroPost)
+    fetch("/medidas/postNovo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        numeroPostServer : numeroPost,
+      }),
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO postPadrão()!");
+      resposta.json().then((JSON) => {
+        console.log(JSON);
+        idPost.innerHTML = JSON[1].id;
+        titulo.innerHTML = JSON[1].titulo;
+        descricao.innerHTML = JSON[1].descricao;
+      });
+    });
+  }
 </script>

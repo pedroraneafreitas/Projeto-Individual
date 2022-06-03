@@ -8,7 +8,9 @@ router.post("/instrucao", function (req, res) {
     medidaController.instrucao( res);
 })
 
-
+router.post("/postNovo", function (req, res) {
+    medidaController.postNovo(req, res);
+}) 
 
 // router.get("/ultimas/:idAquario", function (req, res) {
 //     medidaController.buscarUltimasMedidas(req, res);
