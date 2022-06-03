@@ -18,7 +18,8 @@
 
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), postPadrao()">
+    
 
     <!-- , atualizarFeed() -->
    <div class="container">
@@ -53,10 +54,11 @@
 
     <div class="container_feed">
           <div class="post">
-              <h3>#id=<b id="idPost"></b></h3>
-              <h3 id="titulo"></h3>
+              <h3>#id = <b id="idPost"> </b></h3>
+              <h1 id="titulo"></h1>
 
             <span id="descricao">
+                asiobdojasbçdougsabidjbas
             </span>
           </div>
     </div>
@@ -69,50 +71,75 @@
 
 <script>
 
-    let proximaAtualizacao;
-    var Post = []
-    let idPostNovo= sessionStorage.ID_USUARIO + 1;
+function postPadrao(){
 
-    window.onload = obterPosts();
-
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    //verificar_autenticacao();
-
-    function obterPostsNovos(idAquario) {
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
-
-        fetch(`/medidas/ultimas`,{
-        method: "get",
+    fetch("/medidas/instrucao", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-               idPostNovoServer:idPostNovo
-
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO postPadrão()!");
+            resposta.json().then(JSON=>{
+                console.log(JSON);
+                idPost.innerHTML = JSON[0].id
+                titulo.innerHTML = JSON[0].titulo
+                descricao.innerHTML = JSON[0].descricao
             })
-        })
-        
-        .then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                   body:JSON.stringify()
-                    post.push(resposta);
 
-    
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
+        });
+
 
     }
-;
+
+
+
+
+
+//     let proximaAtualizacao;
+//     var Post = []
+//     let idPostNovo= sessionStorage.ID_USUARIO + 1;
+
+//     window.onload = obterPosts();
+
+//     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+//     //verificar_autenticacao();
+
+//     function obterPostsNovos(idAquario) {
+//         if (proximaAtualizacao != undefined) {
+//             clearTimeout(proximaAtualizacao);
+//         }
+
+//         fetch(`/medidas/ultimas`,{
+//         method: "get",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({
+//                idPostNovoServer:idPostNovo
+
+//             })
+//         })
+        
+//         .then(function (response) {
+//             if (response.ok) {
+//                 response.json().then(function (resposta) {
+//                    body:JSON.stringify()
+//                     post.push(resposta);
+
+    
+//                 });
+//             } else {
+//                 console.error('Nenhum dado encontrado ou erro na API');
+//             }
+//         })
+//             .catch(function (error) {
+//                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+//             });
+
+//     }
+// ;
 
 
         function obterPosts(){}
