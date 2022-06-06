@@ -84,4 +84,27 @@
     justify-content: center;
 }
 
+.post h3#idPost{
+    margin-right: 50%;
+}
+
+
+.post img{
+    width: 60%;
+}
+
+.post button{
+    background:none;
+    border: none;   
+    width: 5%;
+    margin-right: 50%;
+    
+}
+
+.post button:hover{
+    background-color: #90EE90;
+}
+
+
+
 /* fim conteudo */

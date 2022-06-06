@@ -12,12 +12,11 @@ router.post("/postNovo", function (req, res) {
     medidaController.postNovo(req, res);
 }) 
 
-// router.get("/ultimas/:idAquario", function (req, res) {
-//     medidaController.buscarUltimasMedidas(req, res);
-// });
+router.post("/gostei", function (req, res) {
+    medidaController.gostei(req, res);
+}) 
 
-// router.get("/tempo-real/:idAquario", function (req, res) {
-//     medidaController.buscarMedidasEmTempoReal(req, res);
-// })
+
+
 
 module.exports = router;
