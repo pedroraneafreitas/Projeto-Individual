@@ -93,16 +93,28 @@
     width: 60%;
 }
 
-.post button{
+.post button#likeButton{
     background:none;
     border: none;   
     width: 5%;
     margin-right: 50%;
+    background-color: #d3d3d3;
+    border-radius: 10%;
     
 }
 
-.post button:hover{
+.post button#likeButton:hover{
     background-color: #90EE90;
+}
+
+.post button#reportar{
+  margin-left: 80%;
+  background-color: darkred;
+  border: none;
+  border-radius: 10px;
+  width: 15%;
+  cursor: pointer;
+ 
 }
 
 

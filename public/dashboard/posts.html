@@ -56,9 +56,14 @@
 
         <button onclick="gostei()" id="likeButton">
 
-          <img src="../assets/like.png" > <span id="likeQuantidade"></span>
+          <img src="../assets/like.png"> <span id="likeQuantidade"></span>
 
         </button>
+
+        <button onclick="reportar()" id="reportar">
+          Reportar post
+        </button>
+
       </div>
     </div>
   </div>
@@ -120,21 +125,53 @@
 
     likeButton.style.backgroundColor = "#90EE90";
 
-      fetch("/medidas/gostei", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          numeroPostServer: numeroPost
-        }),
-      }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO gostei()!");
-        resposta.json().then((JSON) => {
-          console.log(JSON);
-        });
+    fetch("/medidas/gostei", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        numeroPostServer: numeroPost
+      }),
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO gostei()!");
+      resposta.json().then((JSON) => {
+        console.log(JSON);
       });
+    });
 
-    };
+  };
+
+  function reportar() {
+
+
+
+    fetch("/medidas/report", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        numeroPostServer: numeroPost
+      }),
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO report()!");
+      resposta.json().then((JSON) => {
+        console.log(JSON);
+
+        if ( resposta != undefined &&
+             resposta != Error) {
+
+          alert('post reportado!')
+
+        } else {
+          alert('houve um erro ao reportar o post')
+
+        }
+      });
+    });
+
+
+  }
 
 </script>

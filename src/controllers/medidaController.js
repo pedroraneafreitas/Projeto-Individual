@@ -48,7 +48,23 @@ function gostei(req, res){
 }
 
 
+function report(req, res){
+    var post = req.body.numeroPostServer;
 
+    if(post == undefined){
+        console.log('post dando UNDEFINED')
+    }else{
+    medidaModel.report(post)
+        .then(
+            function (resposta) {
+                console.log(`\nResultados encontrados: ${resposta.length}`);
+                console.log(`Resultados: ${JSON.stringify(resposta)}`); // transforma JSON em String
+
+                res.json(resposta)
+            }
+        )}
+        
+}
 
 
 
@@ -71,7 +87,8 @@ function gostei(req, res){
 module.exports = {
     instrucao,
     postNovo,
-    gostei
+    gostei,
+    report
 
 
     // buscarUltimasMedidas,

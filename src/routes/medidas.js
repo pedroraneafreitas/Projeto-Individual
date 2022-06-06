@@ -16,6 +16,10 @@ router.post("/gostei", function (req, res) {
     medidaController.gostei(req, res);
 }) 
 
+router.post("/report", function (req, res) {
+    medidaController.report(req, res);
+}) 
+
 
 
 
