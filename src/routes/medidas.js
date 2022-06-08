@@ -21,6 +21,19 @@ router.post("/report", function (req, res) {
 }) 
 
 
+router.get("/reportado", function (req, res) {
+    medidaController.reportado(req, res);
+})
+
+router.post("/usuariosCadastrados", function (req, res) {
+    medidaController.usuariosCadastrados(req, res);
+})
+
+router.get("/cadastradosTotal", function (req, res) {
+    medidaController.cadastradosTotal(req, res);
+})
+
+
 
 
 module.exports = router;

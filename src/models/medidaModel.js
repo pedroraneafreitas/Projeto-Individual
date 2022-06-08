@@ -38,12 +38,37 @@ function report(post) {
 }
 
 
+function reportado() {
+    instrucaoSql = `select count(id) as publicacoes from public where report > 10;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function usuariosCadastrados(data) {
+    instrucaoSql = `select count(email) as usuariosCadastrados from usuario where dtCadastro like '%${data}%';`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function cadastradosTotal() {
+    instrucaoSql = `select count(email) as cadastrosHoje from usuario;`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
 
 module.exports = {
     instrucao,
     postNovo,
     gostei,
-    report
-    // buscarUltimasMedidas,
-    // buscarMedidasEmTempoReal
+    report,
+    reportado,
+    usuariosCadastrados,
+    cadastradosTotal
+
+
 }

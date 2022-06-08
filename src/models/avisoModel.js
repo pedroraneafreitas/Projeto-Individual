@@ -65,7 +65,7 @@ function listarPorUsuario(idUsuario) {
 function publicar(titulo, descricao, idUsuario) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
     var instrucao = `
-        INSERT INTO public (titulo, descricao, fk_usuario, report) VALUES ('${titulo}', '${descricao}', ${idUsuario}, 0);
+        INSERT INTO public (titulo, descricao, fk_usuario, report, gostei) VALUES ('${titulo}', '${descricao}', ${idUsuario}, 0, 0);
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

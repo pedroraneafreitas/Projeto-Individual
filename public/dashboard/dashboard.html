@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="../assets/logo.jpg">
+    <title>InstaCode | dashboard</title>
+</head>
+
+<body onload="plotarGrafico()">
+    <!-- onload="validar()" -->
+
+    <!--Header-->
+
+    <!-- inicio header -->
+    <div class="header">
+        <div class="logo">
+            <a href="index.html"><img src="../assets/logo.jpg" alt=""></a>
+        </div>
+
+
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html">Pagina inicial</a></li>
+                <li> <a href="mural.html">Criar post</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="graficos">
+            <div class="dashboard">
+                <h2> Post´s com mais de 10 reports</h2>
+                <h1 id="reportados"></h1>
+            </div>
+
+            <div class="dashboard">
+                <h2>mes com maior tava de cadastro</h2>
+                <h2 id="mes_maior_cadastro_quantidade"></h2>
+                <h1 id="mes_maior_cadastro"></h1>
+            </div>
+        </div>
+        <div class="graficos">
+            <div class="dashboard">
+                <h2> Usuario cadastrados no toal</h2>
+                <h1 id="cadastrados_agora"></h1>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- fim header -->
+
+</body>
+
+</html>
+
+<script>
+
+    var registros = []
+
+
+
+    function validar() {
+        var id = sessionStorage.ID_USUARIO
+        var nome = sessionStorage.NOME_USUARIO
+        var email = sessionStorage.EMAIL_USUARIO
+
+        if (id != 1) {
+            window.location = '../login.html'
+        } else if (nome != 'AindaNub') {
+            window.location = '../login.html'
+        } else if (email != 'AindaNubOficial@gmail.com') {
+
+        } else {
+            alert('Bem vindo a dashboard')
+        }
+    }
+
+
+    function plotarGrafico() {
+
+
+        setInterval(() => {
+            pegarDados();
+            plotarGrafico
+        }, 5000);
+
+        registros = []
+
+
+
+    }
+
+
+    function pegarDados() {
+
+
+        for (var i = 0; i < 3; i++) {
+
+
+            if (i == 0) {
+
+                fetch(`/medidas/reportado`, { cache: 'no-store' }).then(
+                    function (resultado) {
+
+                        console.log("ESTOU NO THEN DO Reportado()!")
+
+                        if (resultado.ok) {
+                            resultado.json().then(json => {
+                                console.log(json);
+                                JSON.stringify(json)
+
+
+                                reportados.innerHTML = json.publicacoes
+                            })
+                        } else {
+                            console.log('erro ao entrar no fetch reportado')
+                        }
+
+
+                    }).catch(function (erro) {
+                        console.log(erro);
+                    })
+
+
+
+
+            } else if (i == 1) {
+
+
+                fetch(`/medidas/cadastradosTotal`, { cache: 'no-store' }).then(function (resultado) {
+
+                    console.log("ESTOU NO THEN DO cadastradosAgora()!")
+
+                    if (resultado.ok) {
+                        resultado.json().then(json => {
+                            console.log(json);
+                            JSON.stringify(json)
+
+                            cadastrados_agora.innerHTML = json.cadastrosHoje
+                        })
+                    } else {
+                        console.log('erro ao entrar no fetch reportado')
+                    }
+
+
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
+
+            } else if (i == 2) {
+
+                var rquerimento = ""
+
+                for (var mes = 1; mes < 7; mes++) {
+                    if (mes == 1) {
+
+                        requerimento = "2022-01"
+                        fetch(`/medidas/usuariosCadastrados`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                requerimentoServer: requerimento,
+                            })
+                        }).then(
+
+                            function (resultado) {
+
+                                console.log("ESTOU NO THEN DO usuariosCadastros1()!")
+
+                                if (resultado.ok) {
+                                    resultado.json().then(json => {
+                                        console.log(json);
+                                        JSON.stringify(json)
+
+                                        registros.push(json)
+
+                                    })
+                                } else {
+                                    console.log('erro ao entrar no fetch reportado')
+                                }
+
+
+                            }).catch(function (erro) {
+                                console.log(erro);
+                            })
+                    } else if (mes == 2) {
+                        requerimento = "2022-02"
+                        fetch(`/medidas/usuariosCadastrados`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                requerimentoServer: requerimento,
+                            })
+                        }).then(
+
+                            function (resultado) {
+
+                                console.log("ESTOU NO THEN DO usuariosCadastros2()!")
+
+                                if (resultado.ok) {
+                                    resultado.json().then(json => {
+                                        console.log(json);
+                                        JSON.stringify(json)
+
+                                        registros.push(json.usuariosCadastrados)
+
+                                    })
+                                } else {
+                                    console.log('erro ao entrar no fetch reportado')
+                                }
+
+
+                            }).catch(function (erro) {
+                                console.log(erro);
+                            })
+
+                    } else if (mes == 3) {
+                        requerimento = "2022-03"
+                        fetch(`/medidas/usuariosCadastrados`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                requerimentoServer: requerimento,
+                            })
+                        }).then(
+
+                            function (resultado) {
+
+                                console.log("ESTOU NO THEN DO usuariosCadastros3()!")
+
+                                if (resultado.ok) {
+                                    resultado.json().then(json => {
+                                        console.log(json);
+                                        JSON.stringify(json)
+
+
+                                        registros.push(json.usuariosCadastrados)
+                                    })
+                                } else {
+                                    console.log('erro ao entrar no fetch reportado')
+                                }
+
+
+                            }).catch(function (erro) {
+                                console.log(erro);
+                            })
+
+                    } else if (mes == 4) {
+                        requerimento = "2022-04"
+                        fetch(`/medidas/usuariosCadastrados`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                requerimentoServer: requerimento,
+                            })
+                        }).then(
+
+                            function (resultado) {
+
+                                console.log("ESTOU NO THEN DO usuariosCadastros4()!")
+
+                                if (resultado.ok) {
+                                    resultado.json().then(json => {
+                                        console.log(json);
+                                        JSON.stringify(json)
+
+
+                                        registros.push(json.usuariosCadastrados)
+                                    })
+                                } else {
+                                    console.log('erro ao entrar no fetch reportado')
+                                }
+
+
+                            }).catch(function (erro) {
+                                console.log(erro);
+                            })
+
+                    } else if (mes == 5) {
+                        requerimento = "2022-05"
+
+                        fetch(`/medidas/usuariosCadastrados`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                requerimentoServer: requerimento,
+                            })
+                        }).then(
+
+                            function (resultado) {
+
+                                console.log("ESTOU NO THEN DO usuariosCadastros5()!")
+
+                                if (resultado.ok) {
+                                    resultado.json().then(json => {
+                                        console.log(json);
+                                        JSON.stringify(json)
+
+
+                                        registros.push(json.usuariosCadastrados)
+                                        console.log(registros)
+                                    })
+                                } else {
+                                    console.log('erro ao entrar no fetch reportado')
+                                }
+
+
+                            }).catch(function (erro) {
+                                console.log(erro);
+                            })
+                    } else if (mes == 6) {
+
+                        requerimento = "2022-06"
+
+                        fetch(`/medidas/usuariosCadastrados`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                requerimentoServer: requerimento,
+                            })
+                        }).then(
+
+                            function (resultado) {
+
+                                console.log("ESTOU NO THEN DO usuariosCadastros5()!")
+
+                                if (resultado.ok) {
+                                    resultado.json().then(json => {
+                                        console.log(json);
+                                        JSON.stringify(json)
+
+
+                                        registros.push(json.usuariosCadastrados)
+                                        console.log(registros)
+                                    })
+                                } else {
+                                    console.log('erro ao entrar no fetch reportado')
+                                }
+
+
+                            }).catch(function (erro) {
+                                console.log(erro);
+                            })
+                    }
+                }
+
+
+            }
+
+
+        }
+
+
+
+        var maior = 0
+        var mesMaisCadastro = ""
+
+        for (var contador = 0;
+            contador < 6;
+            contador++) {
+
+
+            if (registros[contador] > maior) {
+                maior = registros[contador]
+                var tic = contador
+
+                if (tic == 0) {
+                    mesMaisCadastro = "janeiro"
+                } else if (tic == 1) {
+                    mesMaisCadastro = "fevereiro"
+                } else if (tic == 2) {
+                    mesMaisCadastro = "março"
+                } else if (tic == 3) {
+                    mesMaisCadastro = "abril"
+                } else if (tic == 4) {
+                    mesMaisCadastro = "maio"
+                } else if (tic == 5) {
+                    mesMaisCadastro = "junho"
+                }
+
+
+            }
+
+
+        }
+
+
+
+        mes_maior_cadastro.innerHTML = mesMaisCadastro
+        mes_maior_cadastro_quantidade.innerHTML = maior
+
+
+
+        registros = []
+
+
+
+    }
+
+
+
+</script>
