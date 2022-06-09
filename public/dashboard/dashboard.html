@@ -42,14 +42,14 @@
             </div>
 
             <div class="dashboard">
-                <h2>mes com maior tava de cadastro</h2>
+                <h2>mes com maior taxa de cadastro</h2>
                 <h1 id="mes_maior_cadastro_quantidade"></h1>
                 <h1 id="mes_maior_cadastro"></h1>
             </div>
         </div>
         <div class="graficos">
             <div class="dashboard">
-                <h2> Usuario cadastrados no toal</h2>
+                <h2> Usuario cadastrados no total</h2>
                 <h1 id="cadastrados_agora"></h1>
 
             </div>
@@ -98,7 +98,7 @@
             plotarGrafico
         }, 5000);
 
-        registros = []
+        
 
 
 
@@ -188,7 +188,7 @@
                                         console.log(json);
                                         JSON.stringify(json)
 
-                                        registros.push(json)
+                                        registros.push(json.usuariosCadastrados)
 
                                     })
                                 } else {
@@ -386,29 +386,30 @@
             contador++) {
 
 
-            if (registros[contador] > maior) {
+            if (maior < registros[contador] ) {
+
                 maior = registros[contador]
                 var tic = contador
-
-                if (tic == 0) {
-                    mesMaisCadastro = "Janeiro"
-                } else if (tic == 1) {
-                    mesMaisCadastro = "Fevereiro"
-                } else if (tic == 2) {
-                    mesMaisCadastro = "Março"
-                } else if (tic == 3) {
-                    mesMaisCadastro = "Abril"
-                } else if (tic == 4) {
-                    mesMaisCadastro = "Maio"
-                } else if (tic == 5) {
-                    mesMaisCadastro = "Junho"
-                }
 
 
             }
 
 
         }
+        if (tic == 0) {
+            mesMaisCadastro = "Janeiro"
+        } else if (tic == 1) {
+            mesMaisCadastro = "Fevereiro"
+        } else if (tic == 2) {
+            mesMaisCadastro = "Março"
+        } else if (tic == 3) {
+            mesMaisCadastro = "Abril"
+        } else if (tic == 4) {
+            mesMaisCadastro = "Maio"
+        } else if (tic == 5) {
+            mesMaisCadastro = "Junho"
+        }
+
 
 
 
